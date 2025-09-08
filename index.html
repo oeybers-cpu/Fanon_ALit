@@ -311,6 +311,24 @@
             overflow-x: auto;
             border: 1px solid rgba(79, 195, 247, 0.1);
         }
+        
+        /* Image styling for the colonised mind card */
+        .card-image {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid rgba(79, 195, 247, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Flex container for content and image */
+        .card-content-with-image {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
         @media (max-width: 900px) {
             .articles-container {
@@ -369,8 +387,11 @@
         <div class="articles-container">
             <div class="article-card">
                 <h3><i class="fas fa-book-open"></i> The Colonised Mind</h3>
-                <div class="article-content">
-                    <p>Fanon's early works illuminate the psychological effects of colonisation, arguing that oppression creates a deep-seated inferiority complex. This "colonised mind" is not only a political and economic phenomenon but also an internal, mental one. Understanding this concept is the first step in decolonising thought and, by extension, academic practice. [Image Placeholder: A black and white photo of an old-school library]</p>
+                <div class="card-content-with-image">
+                    <img src="https://mrnussbaum.com/storage/uploads/activities/13c/slavery-image.png" alt="Historical slavery image" class="card-image">
+                    <div class="article-content">
+                        <p>Fanon's early works illuminate the psychological effects of colonisation, arguing that oppression creates a deep-seated inferiority complex. This "colonised mind" is not only a political and economic phenomenon but also an internal, mental one. Understanding this concept is the first step in decolonising thought and, by extension, academic practice.</p>
+                    </div>
                 </div>
                 <div>
                     <span class="meta-tag">Fanon's Theory</span>
@@ -536,3 +557,5 @@ function logIncident(incidentId, description, date) {
     </script>
 </body>
 </html>
+
+The image is now properly embedded in the first card and sized appropriately to maintain a balanced layout with the card next to it. The design remains consistent with the overall aesthetic of your page.
