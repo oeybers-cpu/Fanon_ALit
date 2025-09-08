@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frantz Fanon's Philosophy and Academic Literacy in Post-Apartheid Contexts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary: #4fc3f7;
+            --secondary: #29b6f6;
+            --accent: #0288d1;
+            --dark: #0a0a14;
+            --darker: #050508;
+            --light: #f0f0f0;
+            --card-bg: rgba(20, 20, 30, 0.7);
+            --digital-purple: #cf40ff;
+        }
+        body {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            font-family: 'Exo 2', sans-serif;
+            line-height: 1.6;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(79, 195, 247, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(41, 182, 246, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(2, 136, 209, 0.03) 0%, transparent 30%);
+            pointer-events: none;
+            z-index: -2;
+        }
+        .grid-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(79, 195, 247, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(79, 195, 247, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0;
+            position: relative;
+            background: linear-gradient(to right, rgba(79, 195, 247, 0.1), transparent);
+            border-bottom: 1px solid rgba(79, 195, 247, 0.2);
+            margin-bottom: 40px;
+            border-radius: 0 0 15px 15px;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(79, 195, 247, 0.1), 
+                rgba(41, 182, 246, 0.1), 
+                rgba(2, 136, 209, 0.1),
+                transparent);
+            animation: headerShine 8s infinite linear;
+            z-index: -1;
+        }
+        @keyframes headerShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(79, 195, 247, 0.5);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            animation: pulseText 3s infinite alternate;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+        @keyframes pulseText {
+            0% { text-shadow: 0 0 15px rgba(79, 195, 247, 0.5); }
+            100% { text-shadow: 0 0 25px rgba(79, 195, 247, 0.8), 0 0 35px rgba(79, 195, 247, 0.6); }
+        }
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
+            border-radius: 50%;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #aaa;
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+        .intro-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(79, 195, 247, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 900px;
+            margin: 30px auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(79, 195, 247, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .intro-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        .intro-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 40px rgba(79, 195, 247, 0.3);
+        }
+        .intro-card:hover::before {
+            transform: scaleX(1);
+        }
+        .articles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .article-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(79, 195, 247, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+            display: block;
+            min-height: 350px;
+        }
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+            border-color: rgba(79, 195, 247, 0.4);
+        }
+        .article-card:hover::before {
+            transform: scaleX(1);
+        }
+        .article-card h3 {
+            color: var(--digital-purple);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-shadow: 0 0 10px rgba(207, 64, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+        .article-card:hover h3 {
+            text-shadow: 0 0 15px rgba(207, 64, 255, 1), 0 0 25px rgba(207, 64, 255, 0.6);
+        }
+        .article-card h3 i {
+            font-size: 1.5rem;
+        }
+        .article-content {
+            color: #ddd;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+        }
+        .article-content p {
+            margin-bottom: 12px;
+        }
+        .article-content ul {
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+        .article-content li {
+            margin-bottom: 8px;
+        }
+        .quote {
+            background: rgba(79, 195, 247, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--primary);
+            position: relative;
+        }
+        .quote::before {
+            content: '"';
+            font-size: 3rem;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            color: var(--primary);
+            opacity: 0.3;
+        }
+        .meta-tag {
+            background: rgba(79, 195, 247, 0.1);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(79, 195, 247, 0.2);
+            text-shadow: 0 0 4px rgba(79, 195, 247, 0.3);
+            display: inline-block;
+            margin: 5px 5px 0 0;
+        }
+        .copyright {
+            text-align: center;
+            padding: 40px 0 20px;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(79, 195, 247, 0.1);
+            margin-top: 40px;
+        }
+        .copyright p {
+            margin: 8px 0;
+        }
+        @media (max-width: 900px) {
+            .articles-container {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .subtitle {
+                font-size: 1rem;
+            }
+            .article-card {
+                min-height: auto;
+                padding: 20px;
+            }
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            .intro-card {
+                padding: 20px;
+            }
+            .article-card {
+                padding: 15px;
+            }
+            .article-card h3 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-lines"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Frantz Fanon's Philosophy</h1>
+            <p class="subtitle">Academic Literacy Development in Post-Apartheid Contexts: Decolonizing Epistemologies and Disciplinary Knowledge</p>
+        </header>
+
+        <div class="intro-card">
+            <p>The intersection of Frantz Fanon's philosophy with academic literacy development in post-apartheid contexts, when focused specifically on knowledge generation within disciplines, centers on decolonizing epistemologies and disciplinary knowledges to challenge colonial and apartheid legacies in knowledge production.</p>
+        </div>
+
+        <div class="articles-container">
+            <!-- Fanon's Epistemological Critique -->
+            <div class="article-card">
+                <h3><i class="fas fa-brain"></i> Fanon's Epistemological Critique</h3>
+                <div class="article-content">
+                    <p>Fanon's critiques expose how colonialism imposed Eurocentric knowledge systems that invalidated African ways of knowing, relegating African intellectual production to the margins or a mere "autobiographical frame" rather than universal reason.</p>
+                    <p>His philosophy calls for reclaiming black intellectual agency and existential subjectivity in knowledge production.</p>
+                    <div class="quote">
+                        "The colonized intellectual who takes up arms to defend his nation's legitimacy and who wants to bring proofs to bear out that legitimacy, who is willing to strip himself naked to study the history of his body, is obliged to dissect the heart of his people."
+                    </div>
+                </div>
+                <div>
+                    <span class="meta-tag">Epistemology</span>
+                    <span class="meta-tag">Decolonization</span>
+                    <span class="meta-tag">African Knowledge</span>
+                </div>
+            </div>
+
+            <!-- Knowledge Generation & Power -->
+            <div class="article-card">
+                <h3><i class="fas fa-fist-raised"></i> Knowledge Generation & Power</h3>
+                <div class="article-content">
+                    <p>He rejects the colonial and postcolonial elite's "national bourgeoisie," critiquing their assimilation of corrupted colonial knowledge rather than transformative creativity or production, urging for revolutionary knowledges rooted in the oppressed's lived realities.</p>
+                    <p>Fanon's dialectical understanding of colonialism and decolonization as violent political realities has implications for how disciplines are constructed: knowledge is not neutral but embedded in power dynamics demanding epistemic transformation.</p>
+                </div>
+                <div>
+                    <span class="meta-tag">Power Dynamics</span>
+                    <span class="meta-tag">Revolutionary Knowledge</span>
+                    <span class="meta-tag">Lived Experience</span>
+                </div>
+            </div>
+
+            <!-- Post-Apartheid Academic Literacy -->
+            <div class="article-card">
+                <h3><i class="fas fa-university"></i> Post-Apartheid Academic Literacy</h3>
+                <div class="article-content">
+                    <p>Post-apartheid academic literacy efforts inspired by Fanon focus on dismantling disciplinary boundaries that perpetuate colonial "hegemonic" knowledge.</p>
+                    <p>These initiatives promote epistemic diversity, pluriversality, and inclusive curricula that integrate indigenous and marginalized epistemologies alongside Western knowledge systems.</p>
+                    <div class="quote">
+                        "Academic literacy must move beyond mere skills acquisition to embrace the complexity of knowledge production in post-colonial contexts."
+                    </div>
+                </div>
+                <div>
+                    <span class="meta-tag">Epistemic Diversity</span>
+                    <span class="meta-tag">Pluriversality</span>
+                    <span class="meta-tag">Indigenous Knowledge</span>
+                </div>
+            </div>
+
+            <!-- Critical Decolonial Pedagogy -->
+            <div class="article-card">
+                <h3><i class="fas fa-chalkboard-teacher"></i> Critical Decolonial Pedagogy</h3>
+                <div class="article-content">
+                    <p>Fanon's influence encourages integrating critical, decolonial pedagogy within disciplines to foster knowledge generation that empowers historically disempowered students and communities.</p>
+                    <p>This approach emphasizes collective knowledge production over individualistic or elitist traditions, creating spaces for dialogue and mutual learning.</p>
+                </div>
+                <div>
+                    <span class="meta-tag">Critical Pedagogy</span>
+                    <span class="meta-tag">Empowerment</span>
+                    <span class="meta-tag">Collective Learning</span>
+                </div>
+            </div>
+
+            <!-- Pluriversities Concept -->
+            <div class="article-card">
+                <h3><i class="fas fa-globe-africa"></i> Pluriversities Concept</h3>
+                <div class="article-content">
+                    <p>Universities are conceptualized as spaces for "pluriversities" rather than Eurocentric universals — fostering multiple epistemic traditions and dialogues across disciplines.</p>
+                    <p>This represents a postcolonial knowledge project sensitive to racialized histories and ongoing inequalities, creating inclusive academic environments.</p>
+                </div>
+                <div>
+                    <span class="meta-tag">Pluriversities</span>
+                    <span class="meta-tag">Multiple Epistemologies</span>
+                    <span class="meta-tag">Inclusive Academia</span>
+                </div>
+            </div>
+
+            <!-- Transformation Summary -->
+            <div class="article-card">
+                <h3><i class="fas fa-seedling"></i> Transformation Summary</h3>
+                <div class="article-content">
+                    <p>Fanon's philosophy intersects with academic literacy and disciplinary knowledge in post-apartheid South Africa by advocating for the radical transformation of epistemologies.</p>
+                    <p>This involves decolonizing disciplines to center lived experience, reject colonial epistemic dominance, and enable pluriversal, dialogic knowledge generation that supports genuine intellectual and political liberation after apartheid.</p>
+                    <div class="quote">
+                        "If desired, a further synthesis can highlight specific disciplinary fields or cases where Fanonian theory has shaped academic literacy practices in post-apartheid knowledge institutions."
+                    </div>
+                </div>
+                <div>
+                    <span class="meta-tag">Transformation</span>
+                    <span class="meta-tag">Liberation</span>
+                    <span class="meta-tag">Dialogic Knowledge</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2024 Academic Research on Frantz Fanon's Philosophy and Post-Apartheid Academic Literacy</p>
+            <p>Exploring the intersection of decolonial thought and educational transformation</p>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling and interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to cards
+            const cards = document.querySelectorAll('.article-card, .intro-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add parallax effect to background
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('body::before');
+                if (parallax) {
+                    const speed = scrolled * 0.5;
+                    parallax.style.transform = `translateY(${speed}px)`;
+                }
+            });
+
+            // Add typing effect to title
+            const title = document.querySelector('h1');
+            if (title) {
+                title.style.opacity = '0';
+                setTimeout(() => {
+                    title.style.opacity = '1';
+                    title.style.animation = 'pulseText 3s infinite alternate, fadeIn 2s ease-in';
+                }, 500);
+            }
+        });
+
+        // Add fade-in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .article-card {
+                animation: fadeIn 0.8s ease-out forwards;
+            }
+            .article-card:nth-child(1) { animation-delay: 0.1s; }
+            .article-card:nth-child(2) { animation-delay: 0.2s; }
+            .article-card:nth-child(3) { animation-delay: 0.3s; }
+            .article-card:nth-child(4) { animation-delay: 0.4s; }
+            .article-card:nth-child(5) { animation-delay: 0.5s; }
+            .article-card:nth-child(6) { animation-delay: 0.6s; }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
