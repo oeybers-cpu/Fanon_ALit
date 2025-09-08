@@ -94,14 +94,6 @@
             0% { left: -100%; }
             100% { left: 100%; }
         }
-        .header-image {
-            width: 100%;
-            max-height: 300px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 20px rgba(79, 195, 247, 0.4);
-        }
         h1 {
             font-size: 2.8rem;
             margin-bottom: 15px;
@@ -181,7 +173,7 @@
         }
         .articles-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr 1fr;
             gap: 30px;
             margin: 40px 0;
         }
@@ -194,9 +186,10 @@
             backdrop-filter: blur(5px);
             position: relative;
             overflow: hidden;
+            display: block;
+            min-height: 400px;
             display: flex;
             flex-direction: column;
-            height: 100%;
         }
         .article-card::before {
             content: '';
@@ -217,13 +210,6 @@
         }
         .article-card:hover::before {
             transform: scaleX(1);
-        }
-        .article-image {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 15px rgba(207, 64, 255, 0.4);
         }
         .article-card h3 {
             color: var(--digital-purple);
@@ -302,6 +288,16 @@
         .copyright p {
             margin: 8px 0;
         }
+        .code-placeholder {
+            background: #1c1c2e;
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            overflow-x: auto;
+            border: 1px solid rgba(79, 195, 247, 0.1);
+        }
+
         @media (max-width: 900px) {
             .articles-container {
                 grid-template-columns: 1fr;
@@ -315,10 +311,6 @@
             .article-card {
                 min-height: auto;
                 padding: 20px;
-            }
-            .header-image, .article-image {
-                width: 100%;
-                max-height: 200px;
             }
         }
         @media (max-width: 600px) {
@@ -346,113 +338,131 @@
     <div class="container">
         <header>
             <!-- Image placeholder for the header. Please insert your image link here. -->
-            <img src="https://lyonnais.hypotheses.org/6657/checknews-politique-frantz-fanon" alt="Image representing Fanon's Philosophy" class="header-image">
-            <h1>Frantz Fanon's Philosophy</h1>
-            <p class="subtitle">Academic Literacy Development in Post-Apartheid Contexts: Decolonising Epistemologies and Disciplinary Knowledge</p>
+            <img src="https://placehold.co/400x200/4fc3f7/0288d1?text=Frantz+Fanon" alt="Image representing Frantz Fanon's Philosophy" class="header-image">
+            <h1>Frantz Fanon's Philosophy and Academic Literacy in Post-Apartheid Contexts</h1>
+            <p class="subtitle">A Reflective Narrative on Decolonising Epistemologies and Disciplinary Knowledge</p>
         </header>
 
         <div class="intro-card">
-            <p>The intersection of Frantz Fanon's philosophy with academic literacy development in post-apartheid contexts, when focused specifically on knowledge generation within disciplines, centres on decolonising epistemologies and disciplinary knowledges to challenge colonial and apartheid legacies in knowledge production.</p>
+            <p>This reflective narrative explores the intersection of Frantz Fanon's philosophy and its relevance to academic literacy in post-apartheid contexts. Each section builds on the last, demonstrating the crucial link between historical analysis, critical thought, and educational transformation.</p>
         </div>
 
         <div class="articles-container">
-            <!-- Fanon's Epistemological Critique -->
+            <!-- Card 1: The Colonised Mind -->
             <div class="article-card">
-                <h3><i class="fas fa-brain"></i> Fanon's Epistemological Critique</h3>
-                <!-- Image placeholder for the article. Please insert your image link here. -->
-                <img src="YOUR_IMAGE_LINK_HERE" alt="Fanon's philosophical ideas" class="article-image">
+                <h3><i class="fas fa-book-open"></i> The Colonised Mind</h3>
                 <div class="article-content">
-                    <p>Fanon's critiques expose how colonialism imposed Eurocentric knowledge systems that invalidated African ways of knowing, relegating African intellectual production to the margins or a mere "autobiographical frame" rather than universal reason.</p>
-                    <p>His philosophy calls for reclaiming black intellectual agency and existential subjectivity in knowledge production.</p>
-                    <div class="quote">
-                        "The colonised intellectual who takes up arms to defend his nation's legitimacy and who wants to bring proofs to bear out that legitimacy, who is willing to strip himself naked to study the history of his body, is obliged to dissect the heart of his people."
-                    </div>
+                    <p>Fanon's early works illuminate the psychological effects of colonisation, arguing that oppression creates a deep-seated inferiority complex. This "colonised mind" is not only a political and economic phenomenon but also an internal, mental one. Understanding this concept is the first step in decolonising thought and, by extension, academic practice. [Image Placeholder: A black and white photo of an old-school library]</p>
+                </div>
+                <div>
+                    <span class="meta-tag">Fanon's Theory</span>
+                    <span class="meta-tag">Colonialism</span>
+                    <span class="meta-tag">Psychology</span>
+                </div>
+            </div>
+
+            <!-- Card 2: Academic Literacy and Decolonisation -->
+            <div class="article-card">
+                <h3><i class="fas fa-graduation-cap"></i> Academic Literacy and Decolonisation</h3>
+                <div class="article-content">
+                    <p>In a post-apartheid context, academic literacy is more than just reading and writing. It is the ability to critically engage with texts that have historically excluded or marginalised local epistemologies. We must prioritise a pedagogical approach that challenges eurocentric knowledge systems and empowers students to find their own voices within academia. This crucial step is about liberating the mind from colonial structures. [Image Placeholder: Students in a university classroom, engaged in a discussion]</p>
+                </div>
+                <div>
+                    <span class="meta-tag">Pedagogy</span>
+                    <span class="meta-tag">Post-Apartheid</span>
+                    <span class="meta-tag">Critical Theory</span>
+                </div>
+            </div>
+
+            <!-- Card 3: Navigating Disciplinary Knowledge -->
+            <div class="article-card">
+                <h3><i class="fas fa-microscope"></i> Navigating Disciplinary Knowledge</h3>
+                <div class="article-content">
+                    <p>Moving beyond the theoretical framework, we face the practical challenge of navigating disciplinary knowledge. Each academic discipline has its own history and set of accepted truths. To decolonise, we must question these foundations. What knowledge is considered valid? Whose history is being told? The answers require us to realise that new, inclusive frameworks are needed to make academia more equitable. [Image Placeholder: A mosaic of different scientific and artistic symbols]</p>
                 </div>
                 <div>
                     <span class="meta-tag">Epistemology</span>
-                    <span class="meta-tag">Decolonisation</span>
-                    <span class="meta-tag">African Knowledge</span>
+                    <span class="meta-tag">Curriculum</span>
+                    <span class="meta-tag">Disciplinary Practice</span>
                 </div>
             </div>
 
-            <!-- Knowledge Generation & Power -->
+            <!-- Card 4: Post-Colonial Reflection -->
             <div class="article-card">
-                <h3><i class="fas fa-fist-raised"></i> Knowledge Generation & Power</h3>
+                <h3><i class="fas fa-brain"></i> Post-Colonial Reflection</h3>
                 <div class="article-content">
-                    <p>He rejects the colonial and postcolonial elite's "national bourgeoisie," critiquing their assimilation of corrupted colonial knowledge rather than transformative creativity or production, urging for revolutionary knowledges rooted in the oppressed's lived realities.</p>
-                    <p>Fanon's dialectical understanding of colonialism and decolonisation as violent political realities has implications for how disciplines are constructed: knowledge is not neutral but embedded in power dynamics demanding epistemic transformation.</p>
+                    <p>Back at the station, the familiar calm of our surroundings provided a much-needed contrast to the day's events. We conducted a debrief, a vital process for learning and professional development. We analysed our decision-making, celebrated our teamwork, and identified areas for improvement, particularly in our communication with the fire and police services. This reflection in a safe space allows us to process the labour of the day and recognise our emotional responses. </p>
                 </div>
                 <div>
-                    <span class="meta-tag">Power Dynamics</span>
-                    <span class="meta-tag">Revolutionary Knowledge</span>
-                    <span class="meta-tag">Lived Experience</span>
+                    <span class="meta-tag">Reflection</span>
+                    <span class="meta-tag">Professional Development</span>
+                    <span class="meta-tag">Teamwork</span>
                 </div>
             </div>
 
-            <!-- Post-Apartheid Academic Literacy -->
+            <!-- Card 5: The Academic Connection -->
             <div class="article-card">
-                <h3><i class="fas fa-university"></i> Post-Apartheid Academic Literacy</h3>
+                <h3><i class="fas fa-book-reader"></i> The Academic Connection</h3>
                 <div class="article-content">
-                    <p>Post-apartheid academic literacy efforts inspired by Fanon focus on dismantling disciplinary boundaries that perpetuate colonial "hegemonic" knowledge.</p>
-                    <p>These initiatives promote epistemic diversity, pluriversality, and inclusive curricula that integrate indigenous and marginalised epistemologies alongside Western knowledge systems.</p>
-                    <div class="quote">
-                        "Academic literacy must move beyond mere skills acquisition to embrace the complexity of knowledge production in post-colonial contexts."
+                    <p>To further our understanding, we turned to the academic literature. Our debrief highlighted a specific need to review the latest guidance on mass-casualty triage protocols. We found several research papers that provided new perspectives on the very challenges we had faced. This academic analysis of our real-world experience is a powerful tool, helping us to continually evolve our practice and ensuring we are better prepared for the next time we answer a call-out. </p>
+                </div>
+                <div>
+                    <span class="meta-tag">Academic Literacy</span>
+                    <span class="meta-tag">Knowledge Transfer</span>
+                    <span class="meta-tag">Continuous Improvement</span>
+                </div>
+            </div>
+            
+            <!-- Card 6: Code Example -->
+            <div class="article-card">
+                <h3><i class="fas fa-file-code"></i> Code Placeholder</h3>
+                <div class="article-content">
+                    <p>This code placeholder demonstrates how a simple JavaScript function could be used to log an incident, connecting the real-world event to a structured data model.</p>
+                    <div class="code-placeholder">
+                        <pre><code class="language-javascript">/**
+ * Logs a new incident to a hypothetical database.
+ * @param {string} incidentId - Unique identifier for the incident.
+ * @param {string} description - A brief description of the incident.
+ * @param {string} date - The date of the incident in YYYY-MM-DD format.
+ */
+function logIncident(incidentId, description, date) {
+    // In a real application, this would interact with a database
+    // like Firebase or a REST API.
+    const incidentRecord = {
+        incidentId: incidentId,
+        description: description,
+        date: date,
+        logTime: new Date().toISOString()
+    };
+
+    console.log("Logging incident:", incidentRecord);
+    
+    // Example of a placeholder for an API call
+    // fetch('/api/incidents', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(incidentRecord),
+    // });
+}
+
+// Example usage:
+// logIncident('MC-20250908-01', 'Multi-vehicle collision on motorway', '2025-09-08');
+</code></pre>
                     </div>
                 </div>
                 <div>
-                    <span class="meta-tag">Epistemic Diversity</span>
-                    <span class="meta-tag">Pluriversality</span>
-                    <span class="meta-tag">Indigenous Knowledge</span>
+                    <span class="meta-tag">Data Management</span>
+                    <span class="meta-tag">Structured Logging</span>
+                    <span class="meta-tag">Coding Example</span>
                 </div>
             </div>
 
-            <!-- Critical Decolonial Pedagogy -->
-            <div class="article-card">
-                <h3><i class="fas fa-chalkboard-teacher"></i> Critical Decolonial Pedagogy</h3>
-                <div class="article-content">
-                    <p>Fanon's influence encourages integrating critical, decolonial pedagogy within disciplines to foster knowledge generation that empowers historically disempowered students and communities.</p>
-                    <p>This approach emphasises collective knowledge production over individualistic or elitist traditions, creating spaces for dialogue and mutual learning.</p>
-                </div>
-                <div>
-                    <span class="meta-tag">Critical Pedagogy</span>
-                    <span class="meta-tag">Empowerment</span>
-                    <span class="meta-tag">Collective Learning</span>
-                </div>
-            </div>
-
-            <!-- Pluriversities Concept -->
-            <div class="article-card">
-                <h3><i class="fas fa-globe-africa"></i> Pluriversities Concept</h3>
-                <div class="article-content">
-                    <p>Universities are conceptualised as spaces for "pluriversities" rather than Eurocentric universals — fostering multiple epistemic traditions and dialogues across disciplines.</p>
-                    <p>This represents a postcolonial knowledge project sensitive to racialised histories and ongoing inequalities, creating inclusive academic environments.</p>
-                </div>
-                <div>
-                    <span class="meta-tag">Pluriversities</span>
-                    <span class="meta-tag">Multiple Epistemologies</span>
-                </div>
-            </div>
-
-            <!-- Transformation Summary -->
-            <div class="article-card">
-                <h3><i class="fas fa-seedling"></i> Transformation Summary</h3>
-                <div class="article-content">
-                    <p>Fanon's philosophy intersects with academic literacy and disciplinary knowledge in post-apartheid South Africa by advocating for the radical transformation of epistemologies.</p>
-                    <p>This involves decolonising disciplines to centre lived experience, reject colonial epistemic dominance, and enable pluriversal, dialogic knowledge generation that supports genuine intellectual and political liberation after apartheid.</p>
-                    <div class="quote">
-                        "If desired, a further synthesis can highlight specific disciplinary fields or cases where Fanonian theory has shaped academic literacy practices in post-apartheid knowledge institutions."
-                    </div>
-                </div>
-                <div>
-                    <span class="meta-tag">Transformation</span>
-                    <span class="meta-tag">Liberation</span>
-                    <span class="meta-tag">Dialogic Knowledge</span>
-                </div>
-            </div>
         </div>
 
         <div class="copyright">
-            <p>&copy; 2024 Academic Research on Frantz Fanon's Philosophy and Post-Apartheid Academic Literacy</p>
+            <p>&copy; 2024 Academic Research on EMS Academic Analysis</p>
             <p>Exploring the intersection of decolonial thought and educational transformation</p>
         </div>
     </div>
