@@ -21,6 +21,9 @@
             --light: #f0f0f0;
             --card-bg: rgba(20, 20, 30, 0.7);
             --digital-purple: #cf40ff;
+            /* Header heights for scroll margin */
+            --top-header-height: 130px; /* Approximate height on larger screens */
+            --top-header-height-sm: 160px; /* Approximate height on small screens */
         }
         body {
             background: linear-gradient(135deg, var(--darker), var(--dark));
@@ -39,7 +42,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
+            background:
                 radial-gradient(circle at 10% 20%, rgba(79, 195, 247, 0.05) 0%, transparent 20%),
                 radial-gradient(circle at 90% 80%, rgba(41, 182, 246, 0.05) 0%, transparent 20%),
                 radial-gradient(circle at 50% 50%, rgba(2, 136, 209, 0.03) 0%, transparent 30%);
@@ -52,7 +55,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(79, 195, 247, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(79, 195, 247, 0.03) 1px, transparent 1px);
             background-size: 40px 40px;
@@ -63,6 +66,8 @@
             max-width: 1400px;
             margin: 0 auto;
             position: relative;
+            /* Adjust margin for fixed header height on small screens */
+            margin-top: calc(var(--top-header-height) + 20px); /* Default for larger screens */
         }
         header {
             text-align: center;
@@ -77,6 +82,15 @@
             flex-direction: column;
             align-items: center;
             gap: 15px;
+            /* Make header fixed for mobile */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            margin: 0;
+            border-radius: 0;
         }
         header::before {
             content: '';
@@ -85,10 +99,10 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(79, 195, 247, 0.1), 
-                rgba(41, 182, 246, 0.1), 
+            background: linear-gradient(90deg,
+                transparent,
+                rgba(79, 195, 247, 0.1),
+                rgba(41, 182, 246, 0.1),
                 rgba(2, 136, 209, 0.1),
                 transparent);
             animation: headerShine 8s infinite linear;
@@ -127,6 +141,7 @@
             -moz-osx-font-smoothing: grayscale;
             backface-visibility: hidden;
             transform: translateZ(0);
+            max-width: 90%; /* Prevent overflow on small screens */
         }
         @keyframes pulseText {
             0% { text-shadow: 0 0 10px rgba(79, 195, 247, 0.5); }
@@ -152,6 +167,7 @@
             -moz-osx-font-smoothing: grayscale;
             backface-visibility: hidden;
             transform: translateZ(0);
+            padding: 0 10px; /* Add padding for small screens */
         }
         .intro-card {
             background: var(--card-bg);
@@ -165,6 +181,8 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            /* Adjust scroll margin for fixed header */
+            scroll-margin-top: calc(var(--top-header-height) + 10px); /* Default for larger screens */
         }
         .intro-card::before {
             content: '';
@@ -204,6 +222,8 @@
             min-height: 400px;
             display: flex;
             flex-direction: column;
+            /* Adjust scroll margin for fixed header */
+            scroll-margin-top: calc(var(--top-header-height) + 10px); /* Default for larger screens */
         }
         .article-card::before {
             content: '';
@@ -311,7 +331,7 @@
             overflow-x: auto;
             border: 1px solid rgba(79, 195, 247, 0.1);
         }
-        
+
         /* Image styling for the colonised mind card */
         .card-image {
             width: 100%;
@@ -322,7 +342,7 @@
             border: 1px solid rgba(79, 195, 247, 0.2);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
-        
+
         /* Flex container for content and image */
         .card-content-with-image {
             display: flex;
@@ -330,6 +350,11 @@
             gap: 15px;
         }
 
+        @media (max-width: 1200px) {
+            .articles-container {
+                grid-template-columns: 1fr;
+            }
+        }
         @media (max-width: 900px) {
             .articles-container {
                 grid-template-columns: 1fr;
@@ -348,6 +373,36 @@
                 width: 20%;
             }
         }
+        @media (max-width: 768px) {
+            body {
+                padding: 10px; /* Reduce padding on small screens */
+            }
+            .container {
+                margin-top: calc(var(--top-header-height-sm) + 15px); /* Adjusted margin for small screens */
+            }
+            .intro-card {
+                padding: 20px;
+                margin: 20px auto;
+                scroll-margin-top: calc(var(--top-header-height-sm) + 15px); /* Adjusted scroll margin */
+            }
+            .articles-container {
+                gap: 20px;
+                margin: 30px 0;
+            }
+            .article-card {
+                padding: 20px;
+                scroll-margin-top: calc(var(--top-header-height-sm) + 15px); /* Adjusted scroll margin */
+            }
+            .article-card h3 {
+                font-size: 1.2rem;
+            }
+            .header-image {
+                width: 25%;
+            }
+            .card-image {
+                max-height: 150px; /* Reduce image height on smaller screens */
+            }
+        }
         @media (max-width: 600px) {
             h1 {
                 font-size: 1.5rem;
@@ -356,7 +411,7 @@
                 font-size: 0.9rem;
             }
             .intro-card {
-                padding: 20px;
+                padding: 15px;
             }
             .article-card {
                 padding: 15px;
@@ -365,14 +420,30 @@
                 font-size: 1.1rem;
             }
             .header-image {
-                width: 25%;
+                width: 30%;
+            }
+            .card-image {
+                max-height: 120px; /* Further reduce image height on smallest screens */
+            }
+            /* Adjust fixed header for small screens */
+            header {
+                padding: 15px 10px;
+                gap: 10px;
+            }
+            .subtitle {
+                padding: 0 5px;
+            }
+            /* Adjust scroll margins for small screens */
+            .intro-card,
+            .article-card {
+                scroll-margin-top: calc(var(--top-header-height-sm) + 10px); /* Adjusted scroll margin */
             }
         }
     </style>
 </head>
 <body>
     <div class="grid-lines"></div>
-    
+
     <div class="container">
         <header>
             <img src="https://i0.wp.com/www.mauritiustimes.com/mt/wp-content/uploads/2021/12/Frantz-Fanon.jpg?fit=1200%2C800&ssl=1" alt="Portrait of Frantz Fanon" class="header-image">
@@ -380,12 +451,12 @@
             <p class="subtitle">A Reflective Narrative on Decolonising Epistemologies and Disciplinary Knowledge</p>
         </header>
 
-        <div class="intro-card">
+        <div class="intro-card" id="introduction">
             <p>This reflective narrative explores the intersection of Frantz Fanon's philosophy and its relevance to academic literacy in post-apartheid contexts. Each section builds on the last, demonstrating the crucial link between historical analysis, critical thought, and educational transformation.</p>
         </div>
 
         <div class="articles-container">
-            <div class="article-card">
+            <div class="article-card" id="colonised-mind">
                 <h3><i class="fas fa-book-open"></i> The Colonised Mind</h3>
                 <div class="card-content-with-image">
                     <img src="https://mrnussbaum.com/storage/uploads/activities/13c/slavery-image.png" alt="Historical slavery image" class="card-image">
@@ -400,7 +471,7 @@
                 </div>
             </div>
 
-            <div class="article-card">
+            <div class="article-card" id="academic-literacy">
                 <h3><i class="fas fa-graduation-cap"></i> Academic Literacy and Decolonisation</h3>
                 <div class="article-content">
                     <p>In a post-apartheid context, academic literacy is more than just reading and writing. It is the ability to critically engage with texts that have historically excluded or marginalised local epistemologies. We must prioritise a pedagogical approach that challenges eurocentric knowledge systems and empowers students to find their own voices within academia. This crucial step is about liberating the mind from colonial structures. [Image Placeholder: Students in a university classroom, engaged in a discussion]</p>
@@ -412,7 +483,7 @@
                 </div>
             </div>
 
-            <div class="article-card">
+            <div class="article-card" id="disciplinary-knowledge">
                 <h3><i class="fas fa-microscope"></i> Navigating Disciplinary Knowledge</h3>
                 <div class="article-content">
                     <p>Moving beyond the theoretical framework, we face the practical challenge of navigating disciplinary knowledge. Each academic discipline has its own history and set of accepted truths. To decolonise, we must question these foundations. What knowledge is considered valid? Whose history is being told? The answers require us to realise that new, inclusive frameworks are needed to make academia more equitable. [Image Placeholder: A mosaic of different scientific and artistic symbols]</p>
@@ -424,7 +495,7 @@
                 </div>
             </div>
 
-            <div class="article-card">
+            <div class="article-card" id="post-colonial-reflection">
                 <h3><i class="fas fa-brain"></i> Post-Colonial Reflection</h3>
                 <div class="article-content">
                     <p>Back at the station, the familiar calm of our surroundings provided a much-needed contrast to the day's events. We conducted a debrief, a vital process for learning and professional development. We analysed our decision-making, celebrated our teamwork, and identified areas for improvement, particularly in our communication with the fire and police services. This reflection in a safe space allows us to process the labour of the day and recognise our emotional responses. </p>
@@ -436,7 +507,7 @@
                 </div>
             </div>
 
-            <div class="article-card">
+            <div class="article-card" id="academic-connection">
                 <h3><i class="fas fa-book-reader"></i> The Academic Connection</h3>
                 <div class="article-content">
                     <p>To further our understanding, we turned to the academic literature. Our debrief highlighted a specific need to review the latest guidance on mass-casualty triage protocols. We found several research papers that provided new perspectives on the very challenges we had faced. This academic analysis of our real-world experience is a powerful tool, helping us to continually evolve our practice and ensuring we are better prepared for the next time we answer a call-out. </p>
@@ -447,8 +518,8 @@
                     <span class="meta-tag">Continuous Improvement</span>
                 </div>
             </div>
-            
-            <div class="article-card">
+
+            <div class="article-card" id="code-placeholder">
                 <h3><i class="fas fa-file-code"></i> Code Placeholder</h3>
                 <div class="article-content">
                     <p>This code placeholder demonstrates how a simple JavaScript function could be used to log an incident, connecting the real-world event to a structured data model.</p>
@@ -470,7 +541,7 @@ function logIncident(incidentId, description, date) {
     };
 
     console.log("Logging incident:", incidentRecord);
-    
+
     // Example of a placeholder for an API call
     // fetch('/api/incidents', {
     //     method: 'POST',
@@ -482,8 +553,7 @@ function logIncident(incidentId, description, date) {
 }
 
 // Example usage:
-// logIncident('MC-20250908-01', 'Multi-vehicle collision on motorway', '2025-09-08');
-```</pre>
+// logIncident('MC-20250908-01', 'Multi-vehicle collision on motorway', '2025-09-08');</code></pre>
                     </div>
                 </div>
                 <div>
@@ -534,6 +604,20 @@ function logIncident(incidentId, description, date) {
                     title.style.animation = 'pulseText 3s infinite alternate, fadeIn 2s ease-in';
                 }, 500);
             }
+
+            // Add smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
         });
 
         // Add fade-in animation
@@ -558,4 +642,4 @@ function logIncident(incidentId, description, date) {
 </body>
 </html>
 
-The image is now properly embedded in the first card and sized appropriately to maintain a balanced layout with the card next to it. The design remains consistent with the overall aesthetic of your page.
+
